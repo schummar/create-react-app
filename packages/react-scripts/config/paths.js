@@ -69,7 +69,8 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   additionalBabelPaths:
-    require(resolveApp('package.json')).additionalBabelPaths ?? [],
+    require(resolveApp('package.json')).additionalBabelPaths?.map(resolveApp) ??
+    [],
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
@@ -94,7 +95,8 @@ module.exports = {
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   additionalBabelPaths:
-    require(resolveApp('package.json')).additionalBabelPaths ?? [],
+    require(resolveApp('package.json')).additionalBabelPaths?.map(resolveApp) ??
+    [],
   appTsConfig: resolveApp('tsconfig.json'),
   appJsConfig: resolveApp('jsconfig.json'),
   yarnLockFile: resolveApp('yarn.lock'),
@@ -132,7 +134,9 @@ if (
     appPackageJson: resolveOwn('package.json'),
     appSrc: resolveOwn(`${templatePath}/src`),
     additionalBabelPaths:
-      require(resolveApp('package.json')).additionalBabelPaths ?? [],
+      require(resolveApp('package.json')).additionalBabelPaths?.map(
+        resolveApp
+      ) ?? [],
     appTsConfig: resolveOwn(`${templatePath}/tsconfig.json`),
     appJsConfig: resolveOwn(`${templatePath}/jsconfig.json`),
     yarnLockFile: resolveOwn(`${templatePath}/yarn.lock`),
